@@ -14,10 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('borrowed', function (Blueprint $table) {
-            $table->foreignId('books_id')->after('id');
-            $table->foreignId('users_id')->after('id');
-            $table->dateTime('borrowed_at')->after('book_id');
-            $table->string('return_by')->after('book_id');
+            $table->foreignId('books_id');
+            $table->foreignId('users_id');
+            $table->dateTime('borrowed_at');
+            $table->string('return_by');
         });
     }
 
@@ -29,7 +29,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('borrowed', function (Blueprint $table) {
-            $table->dropColumn(['book_id', 'user_id', 'borrowed_at', 'return_by']);
+            $table->dropColumn(['books_id', 'users_id', 'borrowed_at', 'return_by']);
         });
     }
 };
